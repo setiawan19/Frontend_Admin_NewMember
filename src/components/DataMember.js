@@ -51,23 +51,31 @@ export class DataMember extends Component {
     });
   }
 
-  buttonApp() {
+  Editbtn() {
     return (
       <div>
-        <button onClick={() => window.alert("test")}>Test</button>
+        <Button label="Edit" icon="pi pi-pencil" className="p-button-warning" />
+      </div>
+    );
+  }
+  Delbtn() {
+    return (
+      <div>
+        <Button
+          label="Delete"
+          icon="pi pi-pencil"
+          className="p-button-danger"
+        />
       </div>
     );
   }
 
   render() {
-    let footer = (
-      <div className="p-clearfix" style={{ width: "100%" }}>
-        <button
-          style={{ float: "left" }}
-          className="pi pi-plus btn btn-primary"
-        >
-          <Link to="/AddMahasiswa">Add</Link>
-        </button>
+    let btnAdd = (
+      <div className="p-clearfix" style={{ width: "15%" }}>
+        <Link to="/AddMember">
+          <Button label="Add Member" icon="pi pi-plus" />
+        </Link>
       </div>
     );
     return (
@@ -79,8 +87,7 @@ export class DataMember extends Component {
               value={this.state.dataTableValue}
               paginatorPosition="both"
               selectionMode="single"
-              footer={footer}
-              header="List Member"
+              header={btnAdd}
               paginator={true}
               rows={10}
               responsive={true}
@@ -102,8 +109,8 @@ export class DataMember extends Component {
               <Column field="rumah" header="Rumah" sortable={true} />
               <Column field="nikah" header="Menikah" sortable={true} />
               <Column field="anak" header="Anak" sortable={true} />
-              <Column header="Edit" body={this.buttonApp.bind(this)} />
-              <Column header="Delete" />
+              <Column header="Edit" body={this.Editbtn.bind(this)} />
+              <Column header="Delete" body={this.Delbtn.bind(this)} />
             </DataTable>
             {/* <table>
                             <thead>

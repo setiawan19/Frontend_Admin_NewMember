@@ -23,21 +23,8 @@ export class Registrasi extends Component {
   }
 
   render() {
-    let footer = (
+    let btnAdd = (
       <div className="p-clearfix" style={{ width: "15%" }}>
-        {/* <button
-          style={{
-            float: "left",
-            backgroundColor: "#007AD9",
-            color: "white",
-            padding: "5px",
-            borderRadius: "10px",
-            width: "50px"
-          }}
-          className="edit-btn"
-        >
-          <Link to="/AddMember">Add</Link>
-        </button> */}
         <Link to="/AddMember">
           <Button label="Add Member" icon="pi pi-plus" />
         </Link>
@@ -56,7 +43,7 @@ export class Registrasi extends Component {
               value={this.state.dataTable}
               paginatorPosition="both"
               selectionMode="single"
-              header={footer}
+              header={btnAdd}
               paginator={true}
               rows={10}
               // footer={footer}
@@ -70,7 +57,7 @@ export class Registrasi extends Component {
               <Column field="lahir" header="Tempat Lahir" sortable={true} />
               <Column field="birth" header="Tgl Lahir" sortable={true} />
               <Column field="alamat" header="Alamat" sortable={true} />
-              <Column value="member" header="Status Member" sortable={true} />
+              <Column field="member" header="Status Member" sortable={true} />
               <Column
                 field="penghasilan"
                 header="Penghasilan"

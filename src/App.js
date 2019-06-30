@@ -28,7 +28,7 @@ import "./App.css";
 import { DataMember } from "./components/DataMember";
 import { DataNonMember } from "./components/DataNonMember";
 import { AddMember } from "./components/AddMember";
-import { EditMahasiswa } from "./components/EditMahasiswa";
+import { EditMember } from "./components/EditMember";
 import { ListFK_PR } from "./components/ListFK_PR";
 import { Registrasi } from "./components/Registrasi";
 import { Master } from "./components/Master";
@@ -219,7 +219,7 @@ class App extends Component {
           <Route path="/data_member" component={DataMember} />
           <Route path="/data_nonmember" component={DataNonMember} />
           <Route path="/AddMember" component={AddMember} />
-          <Route path="/EditMahasiswa" component={EditMahasiswa} />
+          <Route path="/EditMember" component={EditMember} />
           <Route path="/Jurusan" component={ListFK_PR} />
           <Route path="/ListRegistrasi" component={Registrasi} />
           <Route path="/Master" component={Master} />
