@@ -20,8 +20,10 @@ export class Master extends Component {
     this.state = {
       date1: null,
       radioValue: null,
-      dropdownProdi: null,
-      dropdownFakultas: null,
+      dropdownPenghasilan: null,
+      dropdownAnak: null,
+      dropdownNikah: null,
+      dropdownRumah: null,
       ratingValue: null,
       v1: null,
       v2: null,

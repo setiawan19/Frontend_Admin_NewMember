@@ -14,21 +14,18 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { DataView, DataViewLayoutOptions } from "primereact/dataview";
-// import {AddMahasiswa} from './AddMahasiswa';
 
-export class ListMahasiswa extends Component {
+export class DataMember extends Component {
   constructor() {
     super();
     this.state = {
       dataTableValue: []
     };
-    // this.createdMenu();
-    // this.save = this.save.bind(this);
     this.deleteData = this.deleteData.bind(this);
     this.onDataSelect = this.onDataSelect.bind(this);
   }
   componentDidMount() {
-    axios.get("http://localhost:3210/mahasiswa").then(getdata => {
+    axios.get("http://localhost:8000/member").then(getdata => {
       this.setState({
         dataTableValue: getdata.data
       });
@@ -63,24 +60,6 @@ export class ListMahasiswa extends Component {
   }
 
   render() {
-    // let list_mhs = this.state.dataTableValue.map((item, index)=>{
-    //     var nim = item.nim;
-    //     var nama = item.nama;
-    //     var jenis_kelamin = item.jenis_kelamin;
-    //     var prodi = item.prodi;
-    //     var fakultas = item.fakultas;
-    //     var total_sks = item.total_sks;
-    //     return <tr key={index} style={{textAlign: 'center'}}>
-    //         <td>{nim}</td> <td>{nama}</td> <td>{jenis_kelamin}</td>
-    //         <td>{prodi}</td> <td>{fakultas}</td> <td>{total_sks}</td>
-    //         <td>
-    //         <span>
-    //           <Link to={{ pathname:'/editmahasiswa', state: {nim: nim}}} className="btn btn-warning" style={{marginBottom:40}}><i className="fa fa-pencil-square"></i></Link>
-    //           <button onClick={() => this.deleteData(nim)} className="btn btn-danger"><i className="fa fa-times" aria-hidden="true"></i></button>
-    //         </span>
-    //         </td>
-    //     </tr>
-    // })
     let footer = (
       <div className="p-clearfix" style={{ width: "100%" }}>
         <button
@@ -110,16 +89,19 @@ export class ListMahasiswa extends Component {
                 this.setState({ dataTableSelection: event.value })
               }
             >
-              <Column field="nim" header="NIM" sortable={true} />
               <Column field="nama" header="Nama" sortable={true} />
+              <Column field="lahir" header="Lahir" sortable={true} />
+              <Column field="birth" header="Tgl Lahir" sortable={true} />
+              <Column field="alamat" header="Alamat" sortable={true} />
+              <Column field="member" header="Member" sortable={true} />
               <Column
-                field="jenis_kelamin"
-                header="Jenis Kelamin"
+                field="penghasilan"
+                header="Penghasilan"
                 sortable={true}
               />
-              <Column field="nama_prodi" header="Prodi" sortable={true} />
-              <Column field="fakultas" header="Fakultas" sortable={true} />
-              <Column field="total_sks" header="Total SKS" sortable={true} />
+              <Column field="rumah" header="Rumah" sortable={true} />
+              <Column field="nikah" header="Menikah" sortable={true} />
+              <Column field="anak" header="Anak" sortable={true} />
               <Column header="Edit" body={this.buttonApp.bind(this)} />
               <Column header="Delete" />
             </DataTable>
