@@ -24,17 +24,17 @@ export class AddMember extends Component {
       dropdownNikah: [],
       dropdownAnak: [],
       dropdownRumah: [],
-      point_penghasilan: [],
-      id: null,
-      nama: null,
-      id_kawin: null,
-      id_penghasilan: null,
-      id_rumah: null,
-      id_anak: null,
-      tempat_lahir: null,
-      tanggal_lahir: null,
-      alamat: null,
-      status_member: null
+      // hp: 0,
+      id: 0,
+      nama: "",
+      id_kawin: 0,
+      id_penghasilan: 0,
+      id_rumah: 0,
+      id_anak: 0,
+      tempat_lahir: "",
+      tanggal_lahir: "",
+      alamat: "",
+      status_member: ""
     };
   }
   componentDidMount() {
@@ -59,49 +59,96 @@ export class AddMember extends Component {
       });
     });
   }
-  componentDidUpdate() {
-    axios
-      .get(
-        `http://localhost:8000/point_penghasilan/${this.state.id_penghasilan}`
-      )
-      .then(getdata => {
-        this.setState({
-          point_penghasilan: getdata.data
-        });
-      });
-  }
-  kirimData = () => {
-    // axios
-    //   .get(
-    //     `http://localhost:8000/point_penghasilan/${this.state.id_penghasilan}`
-    //   )
-    //   .then(getdata => {
-    //     this.setState({
-    //       point_penghasilan: getdata.data
-    //     });
-    //   });
-    var nilai = this.state.point_penghasilan[0];
-    var Boint = nilai.point;
-    console.log("ini dia ", this.state.point_penghasilan);
-    console.log("ini ", Boint + 100);
-    //e.preventDefault();
 
-    // let dataForm = new FormData();
-    // dataForm.append("id", this.state.id);
-    // dataForm.append("nama", this.state.nama);
-    // dataForm.append("id_kawin", this.state.id_kawin);
-    // dataForm.append("id_penghasilan", this.state.id_penghasilan);
-    // dataForm.append("id_rumah", this.state.id_rumah);
-    // dataForm.append("id_anak", this.state.id_anak);
-    // dataForm.append("tanggal_lahir", this.state.tanggal_lahir);
-    // dataForm.append("tanggal_lahir", this.state.tanggal_lahir);
-    // dataForm.append("alamat", this.state.alamat);
-    // dataForm.append("status_member", this.state.status_member);
-    // axios.post("http://localhost:8000/add", dataForm);
-    // window.location.href = "/ListRegistrasi";
+  saveData = () => {
+    //    e.preventDefault();
+
+    //get point penghasilan
+    var x1 = this.state.dropdownPenghasilan.length;
+    var point_P;
+    for (var i = 0; i < x1; i++) {
+      if (this.state.id_penghasilan == this.state.dropdownPenghasilan[i].id) {
+        point_P = this.state.dropdownPenghasilan[i].point;
+      }
+    }
+    //get point anak
+    var x2 = this.state.dropdownAnak.length;
+    var point_A;
+    for (var i = 0; i < x2; i++) {
+      if (this.state.id_anak == this.state.dropdownAnak[i].id) {
+        point_A = this.state.dropdownAnak[i].point;
+      }
+    }
+    //get point Nikah
+    var x3 = this.state.dropdownNikah.length;
+    var point_N;
+    for (var i = 0; i < x3; i++) {
+      if (this.state.id_kawin == this.state.dropdownNikah[i].id) {
+        point_N = this.state.dropdownNikah[i].point;
+      }
+    }
+    //get point Rumah
+    var x4 = this.state.dropdownRumah.length;
+    var point_R;
+    for (var i = 0; i < x4; i++) {
+      if (this.state.id_rumah == this.state.dropdownRumah[i].id) {
+        point_R = this.state.dropdownRumah[i].point;
+      }
+    }
+    var hasilPoint = point_A + point_N + point_P + point_R;
+    console.log("point penghasilan ", point_P);
+    console.log("point anak ", point_A);
+    console.log("point Nikah ", point_N);
+    console.log("point Rumah ", point_R);
+    console.log("point Hasil ", hasilPoint);
+
+    if (hasilPoint >= 8) {
+      this.setState({
+        status_member: "iya"
+      });
+    } else {
+      this.setState({
+        status_member: "tidak"
+      });
+    }
+    // this.setState({ status_member: "halo" });
+    console.log(this.state.id);
+    console.log("status ", this.state.status_member);
+
+    var url = "http://localhost:8000/add";
+    axios
+      .post(url, {
+        id: this.state.id,
+        nama: this.state.nama,
+        id_kawin: this.state.id_kawin,
+        id_penghasilan: this.state.id_penghasilan,
+        id_rumah: this.state.id_rumah,
+        id_anak: this.state.id_anak,
+        tempat_lahir: this.state.tempat_lahir,
+        tanggal_lahir: this.state.tanggal_lahir,
+        alamat: this.state.alamat,
+        status_member: this.state.status_member
+      })
+      .then(function(response) {
+        console.log(response);
+        if (alert("anda Berhasil menambahkan data")) {
+          window.location.href("/ListRegistrasi");
+        }
+      })
+      .catch(function(error) {
+        console.log(error);
+        if (alert("anda gagal menambahkan data")) {
+          window.location.reload();
+        }
+      });
+    //window.alert("anda berhasil menambahkan data");
+    //window.location.href = "/ListRegistrasi";
   };
 
   render() {
+    // let test = () => {
+    //   this.saveData();
+    // };
     // console.log("point = ", this.state.point_penghasilan);
     return (
       <div className="p-grid p-fluid">
@@ -112,6 +159,19 @@ export class AddMember extends Component {
           <div className="card card-w-title">
             <h4>Personal</h4>
             <div className="p-grid">
+              <div className="p-col-12 p-md-4 form-group">
+                <label>Id</label>
+              </div>
+              <div className="p-col-12 p-md-6 form-group">
+                <InputText
+                  className="form-control"
+                  placeholder="Id"
+                  name="id"
+                  type="int"
+                  value={this.state.id}
+                  onChange={e => this.setState({ id: e.value })}
+                />
+              </div>
               <div className="p-col-12 p-md-4 form-group">
                 <label>Nama</label>
               </div>
@@ -170,7 +230,6 @@ export class AddMember extends Component {
                 onChange={e =>
                   this.setState({
                     id_penghasilan: e.target.value,
-                    date1: e.target.point,
                     validationError:
                       e.target.value == "" ? "pilih penghasilan" : ""
                   })
@@ -184,14 +243,7 @@ export class AddMember extends Component {
                 }}
               >
                 {this.state.dropdownPenghasilan.map((item, ind) => (
-                  <option
-                    key={ind}
-                    value={item.id}
-                    point={item.point}
-                    // onChange={e =>
-                    //   (this.nilai = parseInt(this.nilai) + parseInt(item.point))
-                    // }
-                  >
+                  <option key={ind} value={item.id}>
                     {item.status}
                   </option>
                 ))}
@@ -277,7 +329,7 @@ export class AddMember extends Component {
               <Button
                 label="Save"
                 icon="pi pi-plus"
-                onClick={() => this.kirimData()}
+                onClick={() => this.saveData()}
               />
             </div>
           </div>
