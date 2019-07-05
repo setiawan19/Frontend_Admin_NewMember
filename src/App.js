@@ -29,9 +29,17 @@ import { DataMember } from "./components/DataMember";
 import { DataNonMember } from "./components/DataNonMember";
 import { AddMember } from "./components/AddMember";
 import { EditMember } from "./components/EditMember";
-import { ListFK_PR } from "./components/ListFK_PR";
+// import { ListFK_PR } from "./components/ListFK_PR";
 import { Registrasi } from "./components/Registrasi";
 import { Master } from "./components/Master";
+import { AddMaster_Penghasilan } from "./components/comp_master/AddMaster_Penghasilan";
+import { AddMaster_Nikah } from "./components/comp_master/AddMaster_Nikah";
+import { AddMaster_Anak } from "./components/comp_master/AddMaster_Anak";
+import { AddMaster_Rumah } from "./components/comp_master/AddMaster_Rumah";
+import { EditMaster_Penghasilan } from "./components/comp_master/EditMaster_Penghasilan";
+import { EditMaster_Nikah } from "./components/comp_master/EditMaster_Nikah";
+import { EditMaster_Anak } from "./components/comp_master/EditMaster_Anak";
+import { EditMaster_Rumah } from "./components/comp_master/EditMaster_Rumah";
 
 class App extends Component {
   constructor() {
@@ -220,9 +228,23 @@ class App extends Component {
           <Route path="/data_nonmember" component={DataNonMember} />
           <Route path="/AddMember" component={AddMember} />
           <Route path="/EditMember" component={EditMember} />
-          <Route path="/Jurusan" component={ListFK_PR} />
+          {/* <Route path="/Jurusan" component={ListFK_PR} /> */}
           <Route path="/ListRegistrasi" component={Registrasi} />
           <Route path="/Master" component={Master} />
+          <Route
+            path="/AddMaster_Penghasilan"
+            component={AddMaster_Penghasilan}
+          />
+          <Route path="/AddMaster_Nikah" component={AddMaster_Nikah} />
+          <Route path="/AddMaster_Anak" component={AddMaster_Anak} />
+          <Route path="/AddMaster_Rumah" component={AddMaster_Rumah} />
+          <Route
+            path="/EditMaster_Penghasilan"
+            component={EditMaster_Penghasilan}
+          />
+          <Route path="/EditMaster_Nikah" component={EditMaster_Nikah} />
+          <Route path="/EditMaster_Anak" component={EditMaster_Anak} />
+          <Route path="/EditMaster_Rumah" component={EditMaster_Rumah} />
         </div>
 
         {/* <AppFooter /> */}
