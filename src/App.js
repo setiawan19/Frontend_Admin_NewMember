@@ -40,6 +40,8 @@ import { EditMaster_Penghasilan } from "./components/comp_master/EditMaster_Peng
 import { EditMaster_Nikah } from "./components/comp_master/EditMaster_Nikah";
 import { EditMaster_Anak } from "./components/comp_master/EditMaster_Anak";
 import { EditMaster_Rumah } from "./components/comp_master/EditMaster_Rumah";
+import { AdminLogout } from "./components/comp_master/AdminLogout";
+import { AdminLogin } from "./components/comp_master/AdminLogin";
 
 class App extends Component {
   constructor() {
@@ -115,7 +117,7 @@ class App extends Component {
         label: "Dashboard",
         icon: "pi pi-fw pi-home",
         command: () => {
-          window.location = "/";
+          window.location = "/Dashboard";
         }
       },
       {
@@ -223,7 +225,8 @@ class App extends Component {
         </div>
 
         <div className="layout-main">
-          <Route path="/" exact component={Dashboard} />
+          <Route exact path="/" component={AdminLogin} />
+          <Route path="/Dashboard" component={Dashboard} />
           <Route path="/data_member" component={DataMember} />
           <Route path="/data_nonmember" component={DataNonMember} />
           <Route path="/AddMember" component={AddMember} />
@@ -245,6 +248,7 @@ class App extends Component {
           <Route path="/EditMaster_Nikah" component={EditMaster_Nikah} />
           <Route path="/EditMaster_Anak" component={EditMaster_Anak} />
           <Route path="/EditMaster_Rumah" component={EditMaster_Rumah} />
+          <Route path="/AdminLogout" component={AdminLogout} />
         </div>
 
         {/* <AppFooter /> */}
