@@ -66,7 +66,7 @@ export class Registrasi extends Component {
               <Column field="rumah" header="Rumah" sortable={true} />
               <Column field="nikah" header="Status" sortable={true} />
               <Column field="anak" header="Anak" sortable={true} />
-              <Column header="Action" value="detail" />
+              {/* <Column header="Action" value="detail" /> */}
             </DataTable>
           </div>
         </div>

@@ -10,17 +10,21 @@ export class EditMaster_Penghasilan extends Component {
     super();
     this.state = {
       id: null,
-      nama: '',
-      point: '',
+      nama: "",
+      point: "",
+      datatable: [],
+      dataTableValue: []
     };
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/penghasilan/${this.state.id}`).then(getData => {
-      this.setState({
-        nama: getData.data
+    axios
+      .get(`http://localhost:8000/penghasilan/${this.state.id}`)
+      .then(getData => {
+        this.setState({
+          datatable: getData.data
+        });
       });
-    });
   }
 
   saveData() {

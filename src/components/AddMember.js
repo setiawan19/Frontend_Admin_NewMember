@@ -59,7 +59,26 @@ export class AddMember extends Component {
       });
     });
   }
+  // componentWillUpdate() {}
 
+  hitung = hasilPoint => {
+    console.log("ini hitung ", hasilPoint);
+    const nextStatus = hasilPoint >= 8 ? "iya" : "tidak";
+    this.setState({ status_member: nextStatus });
+    // if (hasilPoint >= 8) {
+    //   this.setState(
+    //     (previous => ({ status_member: previous.status_member + "Iya" }),
+    //     () => console.log(this.state))
+    //   );
+    // } else {
+    //   this.setState({
+    //     status_member: "tidak"
+    //   });
+    // }
+
+    console.log("ID = ", this.state.id);
+    console.log("status = ", this.state.status_member);
+  };
   saveData = () => {
     //    e.preventDefault();
 
@@ -96,60 +115,122 @@ export class AddMember extends Component {
       }
     }
     var hasilPoint = point_A + point_N + point_P + point_R;
-    console.log("point penghasilan ", point_P);
-    console.log("point anak ", point_A);
-    console.log("point Nikah ", point_N);
-    console.log("point Rumah ", point_R);
-    console.log("point Hasil ", hasilPoint);
 
-    if (hasilPoint >= 8) {
-      this.setState({
-        status_member: "iya"
-      });
-    } else {
-      this.setState({
-        status_member: "tidak"
-      });
-    }
-    // this.setState({ status_member: "halo" });
-    console.log(this.state.id);
-    console.log("status ", this.state.status_member);
+    // console.log("point penghasilan ", point_P);
+    // console.log("point anak ", point_A);
+    // console.log("point Nikah ", point_N);
+    // console.log("point Rumah ", point_R);
+    // console.log("point Hasil ", hasilPoint);
 
-    var url = "http://localhost:8000/add";
-    axios
-      .post(url, {
-        id: this.state.id,
-        nama: this.state.nama,
-        id_kawin: this.state.id_kawin,
-        id_penghasilan: this.state.id_penghasilan,
-        id_rumah: this.state.id_rumah,
-        id_anak: this.state.id_anak,
-        tempat_lahir: this.state.tempat_lahir,
-        tanggal_lahir: this.state.tanggal_lahir,
-        alamat: this.state.alamat,
-        status_member: this.state.status_member
-      })
-      .then(function(response) {
-        console.log(response);
-        if (alert("anda Berhasil menambahkan data")) {
-          window.location.href("/ListRegistrasi");
-        }
-      })
-      .catch(function(error) {
-        console.log(error);
-        if (alert("anda gagal menambahkan data")) {
-          window.location.reload();
-        }
-      });
+    this.hitung(hasilPoint);
+
+    // var url = "http://localhost:8000/add";
+    // axios
+    //   .post(url, {
+    //     id: this.state.id,
+    //     nama: this.state.nama,
+    //     id_kawin: this.state.id_kawin,
+    //     id_penghasilan: this.state.id_penghasilan,
+    //     id_rumah: this.state.id_rumah,
+    //     id_anak: this.state.id_anak,
+    //     tempat_lahir: this.state.tempat_lahir,
+    //     tanggal_lahir: this.state.tanggal_lahir,
+    //     alamat: this.state.alamat,
+    //     status_member: this.state.status_member
+    //   })
+    //   .then(function(response) {
+    //     console.log(response);
+    //     if (alert("anda Berhasil menambahkan data")) {
+    //       window.location.href("/ListRegistrasi");
+    //     }
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //     if (alert("anda gagal menambahkan data")) {
+    //       window.location.reload();
+    //     }
+    //   });
     //window.alert("anda berhasil menambahkan data");
     //window.location.href = "/ListRegistrasi";
   };
 
   render() {
-    // let test = () => {
-    //   this.saveData();
-    // };
-    // console.log("point = ", this.state.point_penghasilan);
+    function hitung(hasilPoint) {
+      console.log("ini hitung ", hasilPoint);
+      const nextStatus = hasilPoint >= 8 ? "iya" : "tidak";
+      this.setState({ status_member: nextStatus });
+
+      console.log("ID = ", this.state.id);
+      console.log("status = ", this.state.status_member);
+      if (this.state.status_member != "") {
+        var url = "http://localhost:8000/add";
+
+        axios
+          .post(url, {
+            id: this.state.id,
+            nama: this.state.nama,
+            id_kawin: this.state.id_kawin,
+            id_penghasilan: this.state.id_penghasilan,
+            id_rumah: this.state.id_rumah,
+            id_anak: this.state.id_anak,
+            tempat_lahir: this.state.tempat_lahir,
+            tanggal_lahir: this.state.tanggal_lahir,
+            alamat: this.state.alamat,
+            status_member: this.state.status_member
+          })
+          .then(function(response) {
+            console.log(response);
+            if (alert("anda Berhasil menambahkan data")) {
+              window.location.href("/ListRegistrasi");
+            }
+          })
+          .catch(function(error) {
+            console.log(error);
+            if (alert("anda gagal menambahkan data")) {
+              window.location.reload();
+            }
+          });
+      }
+    }
+    // console.log("status2 = ", this.state.status_member);
+    // if (
+    //   this.state.status_member != "" &&
+    //   this.state.nama != "" &&
+    //   this.state.tempat_lahir != "" &&
+    //   this.state.tanggal_lahir != "" &&
+    //   this.state.id_anak != 0 &&
+    //   this.state.id_kawin != 0 &&
+    //   this.state.id_penghasilan != 0 &&
+    //   this.state.id_rumah != 0
+    // ) {
+    //   var url = "http://localhost:8000/add";
+    //   axios
+    //     .post(url, {
+    //       id: this.state.id,
+    //       nama: this.state.nama,
+    //       id_kawin: this.state.id_kawin,
+    //       id_penghasilan: this.state.id_penghasilan,
+    //       id_rumah: this.state.id_rumah,
+    //       id_anak: this.state.id_anak,
+    //       tempat_lahir: this.state.tempat_lahir,
+    //       tanggal_lahir: this.state.tanggal_lahir,
+    //       alamat: this.state.alamat,
+    //       status_member: this.state.status_member
+    //     })
+    //     .then(function(response) {
+    //       console.log(response);
+    //       if (alert("anda Berhasil menambahkan data")) {
+    //         window.location.href("/ListRegistrasi");
+    //       }
+    //     })
+    //     .catch(function(error) {
+    //       console.log(error);
+    //       if (alert("anda gagal menambahkan data")) {
+    //         window.location.reload();
+    //       }
+    //     });
+    // }
+
     return (
       <div className="p-grid p-fluid">
         <div className="p-col-12 card card-w-title">
@@ -169,7 +250,7 @@ export class AddMember extends Component {
                   name="id"
                   type="int"
                   value={this.state.id}
-                  onChange={e => this.setState({ id: e.value })}
+                  onChange={e => this.setState({ id: e.target.value })}
                 />
               </div>
               <div className="p-col-12 p-md-4 form-group">
@@ -181,7 +262,7 @@ export class AddMember extends Component {
                   placeholder="Nama"
                   type="text"
                   value={this.state.nama}
-                  onChange={e => this.setState({ nama: e.value })}
+                  onChange={e => this.setState({ nama: e.target.value })}
                 />
               </div>
               <div className="p-col-12 p-md-4 form-group">
@@ -193,7 +274,7 @@ export class AddMember extends Component {
                   placeholder="Alamat"
                   type="text"
                   value={this.state.alamat}
-                  onChange={e => this.setState({ alamat: e.value })}
+                  onChange={e => this.setState({ alamat: e.target.value })}
                 />
               </div>
               <div className="p-col-12 p-md-4 form-group">
@@ -205,7 +286,9 @@ export class AddMember extends Component {
                   placeholder="Tempat Lahir"
                   type="text"
                   value={this.state.tempat_lahir}
-                  onChange={e => this.setState({ tempat_lahir: e.value })}
+                  onChange={e =>
+                    this.setState({ tempat_lahir: e.target.value })
+                  }
                 />
               </div>
               <div className="p-col-12 p-md-4 form-group">
@@ -217,113 +300,125 @@ export class AddMember extends Component {
                   placeholder="Tanggal Lahir"
                   dateFormat="yy/mm/dd"
                   value={this.state.tanggal_lahir}
-                  onChange={e => this.setState({ tanggal_lahir: e.value })}
+                  onChange={e =>
+                    this.setState({ tanggal_lahir: e.target.value })
+                  }
                 />
               </div>
+              <div className="p-col-12 p-md-4 form-group">
+                <label>Penghasilan</label>
+              </div>
+              <div className="p-col-12 p-md-6 form-group">
+                <select
+                  value={this.state.id_penghasilan}
+                  onChange={e =>
+                    this.setState({
+                      id_penghasilan: e.target.value,
+                      validationError:
+                        e.target.value == "" ? "pilih penghasilan" : ""
+                    })
+                  }
+                  placeholder="pilih penghasilan"
+                  style={{
+                    width: "100%",
+                    padding: "5px",
+                    borderRadius: "5px",
+                    height: "35px"
+                  }}
+                >
+                  {this.state.dropdownPenghasilan.map((item, ind) => (
+                    <option key={ind} value={item.id}>
+                      {item.nama}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="p-col-12 p-md-4 form-group">
+                <label>Status Rumah</label>
+              </div>
+              <div className="p-col-12 p-md-6 form-group">
+                <select
+                  value={this.state.id_rumah}
+                  onChange={e =>
+                    this.setState({
+                      id_rumah: e.target.value,
+                      validationError:
+                        e.target.value == "" ? "pilih status rumah" : ""
+                    })
+                  }
+                  placeholder="pilih status rumah"
+                  style={{
+                    width: "100%",
+                    padding: "5px",
+                    borderRadius: "5px",
+                    height: "35px"
+                  }}
+                >
+                  {this.state.dropdownRumah.map((item, ind) => (
+                    <option key={ind} value={item.id}>
+                      {item.nama}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="p-col-12 p-md-4 form-group">
+                <label>Status Nikah</label>
+              </div>
+              <div className="p-col-12 p-md-6 form-group">
+                <select
+                  value={this.state.id_kawin}
+                  onChange={e =>
+                    this.setState({
+                      id_kawin: e.target.value,
+                      validationError:
+                        e.target.value == "" ? "pilih Status Nikah" : ""
+                    })
+                  }
+                  placeholder="pilih Status Nikah"
+                  style={{
+                    width: "100%",
+                    padding: "5px",
+                    borderRadius: "5px",
+                    height: "35px"
+                  }}
+                >
+                  {this.state.dropdownNikah.map((item, ind) => (
+                    <option key={ind} value={item.id}>
+                      {item.nama}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="p-col-12 p-md-4 form-group">
+                <label>Status Anak</label>
+              </div>
+              <div className="p-col-12 p-md-6 form-group">
+                <select
+                  value={this.state.id_anak}
+                  onChange={e =>
+                    this.setState({
+                      id_anak: e.target.value,
+                      validationError:
+                        e.target.value == "" ? "pilih Status Anak" : ""
+                    })
+                  }
+                  placeholder="pilih Status Anak"
+                  style={{
+                    width: "100%",
+                    padding: "5px",
+                    borderRadius: "5px",
+                    height: "35px"
+                  }}
+                >
+                  {this.state.dropdownAnak.map((item, ind) => (
+                    <option key={ind} value={item.id}>
+                      {item.nama}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-            <div className="p-col-12 p-md-4 form-group">
-              <label>Penghasilan</label>
-            </div>
-            <div className="p-col-12 p-md-6 form-group">
-              <select
-                value={this.state.id_penghasilan}
-                onChange={e =>
-                  this.setState({
-                    id_penghasilan: e.target.value,
-                    validationError:
-                      e.target.value == "" ? "pilih penghasilan" : ""
-                  })
-                }
-                placeholder="pilih penghasilan"
-                style={{
-                  width: "100%",
-                  padding: "5px",
-                  borderRadius: "5px",
-                  height: "35px"
-                }}
-              >
-                {this.state.dropdownPenghasilan.map((item, ind) => (
-                  <option key={ind} value={item.id}>
-                    {item.status}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="p-col-12 p-md-6 form-group">
-              <select
-                value={this.state.id_rumah}
-                onChange={e =>
-                  this.setState({
-                    id_rumah: e.target.value,
-                    validationError:
-                      e.target.value == "" ? "pilih status rumah" : ""
-                  })
-                }
-                placeholder="pilih status rumah"
-                style={{
-                  width: "100%",
-                  padding: "5px",
-                  borderRadius: "5px",
-                  height: "35px"
-                }}
-              >
-                {this.state.dropdownRumah.map((item, ind) => (
-                  <option key={ind} value={item.id}>
-                    {item.status}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="p-col-12 p-md-6 form-group">
-              <select
-                value={this.state.id_kawin}
-                onChange={e =>
-                  this.setState({
-                    id_kawin: e.target.value,
-                    validationError:
-                      e.target.value == "" ? "pilih Status Nikah" : ""
-                  })
-                }
-                placeholder="pilih Status Nikah"
-                style={{
-                  width: "100%",
-                  padding: "5px",
-                  borderRadius: "5px",
-                  height: "35px"
-                }}
-              >
-                {this.state.dropdownNikah.map((item, ind) => (
-                  <option key={ind} value={item.id}>
-                    {item.status}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="p-col-12 p-md-6 form-group">
-              <select
-                value={this.state.id_anak}
-                onChange={e =>
-                  this.setState({
-                    id_anak: e.target.value,
-                    validationError:
-                      e.target.value == "" ? "pilih Status Anak" : ""
-                  })
-                }
-                placeholder="pilih Status Anak"
-                style={{
-                  width: "100%",
-                  padding: "5px",
-                  borderRadius: "5px",
-                  height: "35px"
-                }}
-              >
-                {this.state.dropdownAnak.map((item, ind) => (
-                  <option key={ind} value={item.id}>
-                    {item.status}
-                  </option>
-                ))}
-              </select>
-            </div>
+
             {/* ================ */}
             <div className="p-col-3">
               <Button

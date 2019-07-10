@@ -51,18 +51,18 @@ export class Master extends Component {
     });
   }
   btnEdit_P = data => {
-    var url1 = `/EditMaster_Penghasilan /${data.id}`;
+    var url1 = `/EditMaster_Penghasilan/${data.id}`;
     return (
       <div>
-        <a>
-          <Link to={url1}>
-            <Button
-              label="Edit"
-              icon="pi pi-pencil"
-              className="p-button-secondary"
-            />
-          </Link>
-        </a>
+        {/* <a> */}
+        <Link to={url1}>
+          <Button
+            label="Edit"
+            icon="pi pi-pencil"
+            className="p-button-secondary"
+          />
+        </Link>
+        {/* </a> */}
       </div>
     );
   };
@@ -191,38 +191,38 @@ export class Master extends Component {
   render() {
     let Add_P = (
       <div className="p-clearfix" style={{ width: "100%" }}>
-        <a style={{ float: "left", fontSize: 15 }} className="add-btn">
-          <Link to="/AddMaster_Penghasilan">
-            <Button label="Add" icon="pi pi-plus" />
-          </Link>
-        </a>
+        {/* <a style={{ float: "left", fontSize: 15 }} className="add-btn"> */}
+        <Link to="/AddMaster_Penghasilan">
+          <Button label="Add" icon="pi pi-plus" />
+        </Link>
+        {/* </a> */}
       </div>
     );
     let Add_N = (
       <div className="p-clearfix" style={{ width: "100%" }}>
-        <a style={{ float: "left", fontSize: 15 }} className="add-btn">
-          <Link to="/AddMaster_Nikah">
-            <Button label="Add" icon="pi pi-plus" />
-          </Link>
-        </a>
+        {/* <a style={{ float: "left", fontSize: 15 }} className="add-btn"> */}
+        <Link to="/AddMaster_Nikah">
+          <Button label="Add" icon="pi pi-plus" />
+        </Link>
+        {/* </a> */}
       </div>
     );
     let Add_A = (
       <div className="p-clearfix" style={{ width: "100%" }}>
-        <a style={{ float: "left", fontSize: 15 }} className="add-btn">
-          <Link to="/AddMaster_Anak">
-            <Button label="Add" icon="pi pi-plus" />
-          </Link>
-        </a>
+        {/* <a style={{ float: "left", fontSize: 15 }} className="add-btn"> */}
+        <Link to="/AddMaster_Anak">
+          <Button label="Add" icon="pi pi-plus" />
+        </Link>
+        {/* </a> */}
       </div>
     );
     let Add_R = (
       <div className="p-clearfix" style={{ width: "100%" }}>
-        <a style={{ float: "left", fontSize: 15 }} className="add-btn">
-          <Link to="/AddMaster_Rumah">
-            <Button label="Add" icon="pi pi-plus" />
-          </Link>
-        </a>
+        {/* <a style={{ float: "left", fontSize: 15 }} className="add-btn"> */}
+        <Link to="/AddMaster_Rumah">
+          <Button label="Add" icon="pi pi-plus" />
+        </Link>
+        {/* </a> */}
       </div>
     );
     return (
