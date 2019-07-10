@@ -24,7 +24,6 @@ export class AddMember extends Component {
       dropdownNikah: [],
       dropdownAnak: [],
       dropdownRumah: [],
-      // hp: 0,
       id: 0,
       nama: "",
       id_kawin: 0,
@@ -61,24 +60,14 @@ export class AddMember extends Component {
   }
   // componentWillUpdate() {}
 
-  hitung = hasilPoint => {
-    console.log("ini hitung ", hasilPoint);
-    const nextStatus = hasilPoint >= 8 ? "iya" : "tidak";
-    this.setState({ status_member: nextStatus });
-    // if (hasilPoint >= 8) {
-    //   this.setState(
-    //     (previous => ({ status_member: previous.status_member + "Iya" }),
-    //     () => console.log(this.state))
-    //   );
-    // } else {
-    //   this.setState({
-    //     status_member: "tidak"
-    //   });
-    // }
+  // hitung = hasilPoint => {
+  //   console.log("ini hitung ", hasilPoint);
+  //   const nextStatus = hasilPoint >= 8 ? "iya" : "tidak";
+  //   this.setState({ status_member: nextStatus });
 
-    console.log("ID = ", this.state.id);
-    console.log("status = ", this.state.status_member);
-  };
+  //   console.log("ID = ", this.state.id);
+  //   console.log("status = ", this.state.status_member);
+  // };
   saveData = () => {
     //    e.preventDefault();
 
@@ -121,77 +110,79 @@ export class AddMember extends Component {
     // console.log("point Nikah ", point_N);
     // console.log("point Rumah ", point_R);
     // console.log("point Hasil ", hasilPoint);
+    const nextStatus = hasilPoint >= 8 ? "iya" : "tidak";
+    this.setState({ status_member: nextStatus });
 
-    this.hitung(hasilPoint);
-
-    // var url = "http://localhost:8000/add";
-    // axios
-    //   .post(url, {
-    //     id: this.state.id,
-    //     nama: this.state.nama,
-    //     id_kawin: this.state.id_kawin,
-    //     id_penghasilan: this.state.id_penghasilan,
-    //     id_rumah: this.state.id_rumah,
-    //     id_anak: this.state.id_anak,
-    //     tempat_lahir: this.state.tempat_lahir,
-    //     tanggal_lahir: this.state.tanggal_lahir,
-    //     alamat: this.state.alamat,
-    //     status_member: this.state.status_member
-    //   })
-    //   .then(function(response) {
-    //     console.log(response);
-    //     if (alert("anda Berhasil menambahkan data")) {
-    //       window.location.href("/ListRegistrasi");
-    //     }
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //     if (alert("anda gagal menambahkan data")) {
-    //       window.location.reload();
-    //     }
-    //   });
-    //window.alert("anda berhasil menambahkan data");
-    //window.location.href = "/ListRegistrasi";
+    if (this.state.status_member != "") {
+      var url = "http://localhost:8000/add";
+      axios
+        .post(url, {
+          id: this.state.id,
+          nama: this.state.nama,
+          id_kawin: this.state.id_kawin,
+          id_penghasilan: this.state.id_penghasilan,
+          id_rumah: this.state.id_rumah,
+          id_anak: this.state.id_anak,
+          tempat_lahir: this.state.tempat_lahir,
+          tanggal_lahir: this.state.tanggal_lahir,
+          alamat: this.state.alamat,
+          status_member: this.state.status_member
+        })
+        .then(function(response) {
+          console.log(response);
+          if (alert("anda Berhasil menambahkan data")) {
+            window.location.href("/ListRegistrasi");
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+          if (alert("anda gagal menambahkan data")) {
+            window.location.reload();
+          }
+        });
+    }
+    // window.alert("anda berhasil menambahkan data");
+    //  window.location.href = "/ListRegistrasi";
   };
 
   render() {
-    function hitung(hasilPoint) {
-      console.log("ini hitung ", hasilPoint);
-      const nextStatus = hasilPoint >= 8 ? "iya" : "tidak";
-      this.setState({ status_member: nextStatus });
+    // function hitung(hasilPoint) {
+    //   console.log("ini hitung ", hasilPoint);
+    //   const nextStatus = hasilPoint >= 8 ? "iya" : "tidak";
+    //   this.setState({ status_member: nextStatus });
 
-      console.log("ID = ", this.state.id);
-      console.log("status = ", this.state.status_member);
-      if (this.state.status_member != "") {
-        var url = "http://localhost:8000/add";
+    //   console.log("ID = ", this.state.id);
+    //   console.log("status = ", this.state.status_member);
+    //   if (this.state.status_member != "") {
+    //     var url = "http://localhost:8000/add";
 
-        axios
-          .post(url, {
-            id: this.state.id,
-            nama: this.state.nama,
-            id_kawin: this.state.id_kawin,
-            id_penghasilan: this.state.id_penghasilan,
-            id_rumah: this.state.id_rumah,
-            id_anak: this.state.id_anak,
-            tempat_lahir: this.state.tempat_lahir,
-            tanggal_lahir: this.state.tanggal_lahir,
-            alamat: this.state.alamat,
-            status_member: this.state.status_member
-          })
-          .then(function(response) {
-            console.log(response);
-            if (alert("anda Berhasil menambahkan data")) {
-              window.location.href("/ListRegistrasi");
-            }
-          })
-          .catch(function(error) {
-            console.log(error);
-            if (alert("anda gagal menambahkan data")) {
-              window.location.reload();
-            }
-          });
-      }
-    }
+    //     axios
+    //       .post(url, {
+    //         id: this.state.id,
+    //         nama: this.state.nama,
+    //         id_kawin: this.state.id_kawin,
+    //         id_penghasilan: this.state.id_penghasilan,
+    //         id_rumah: this.state.id_rumah,
+    //         id_anak: this.state.id_anak,
+    //         tempat_lahir: this.state.tempat_lahir,
+    //         tanggal_lahir: this.state.tanggal_lahir,
+    //         alamat: this.state.alamat,
+    //         status_member: this.state.status_member
+    //       })
+    //       .then(function(response) {
+    //         console.log(response);
+    //         if (alert("anda Berhasil menambahkan data")) {
+    //           window.location.href("/ListRegistrasi");
+    //         }
+    //       })
+    //       .catch(function(error) {
+    //         console.log(error);
+    //         if (alert("anda gagal menambahkan data")) {
+    //           window.location.reload();
+    //         }
+    //       });
+    //   }
+    // }
     // console.log("status2 = ", this.state.status_member);
     // if (
     //   this.state.status_member != "" &&
