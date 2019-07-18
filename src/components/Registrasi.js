@@ -57,15 +57,17 @@ export class Registrasi extends Component {
               <Column field="lahir" header="Tempat Lahir" sortable={true} />
               <Column field="birth" header="Tgl Lahir" sortable={true} />
               <Column field="alamat" header="Alamat" sortable={true} />
-              <Column field="member" header="Status Member" sortable={true} />
               <Column
                 field="penghasilan"
                 header="Penghasilan"
                 sortable={true}
               />
               <Column field="rumah" header="Rumah" sortable={true} />
-              <Column field="nikah" header="Status" sortable={true} />
+              <Column field="nikah" header="Status Nikah" sortable={true} />
               <Column field="anak" header="Anak" sortable={true} />
+              <Column field="perpanjang" header="Perpanjang" sortable={true} />
+              <Column field="member" header="Status Member" sortable={true} />
+
               {/* <Column header="Action" value="detail" /> */}
             </DataTable>
           </div>

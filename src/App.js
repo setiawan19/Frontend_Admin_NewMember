@@ -31,6 +31,7 @@ import { AddMember } from "./components/AddMember";
 import { EditMember } from "./components/EditMember";
 // import { ListFK_PR } from "./components/ListFK_PR";
 import { Registrasi } from "./components/Registrasi";
+import { DataTraining } from "./components/DataTraining";
 import { Master } from "./components/Master";
 import { AddMaster_Penghasilan } from "./components/comp_master/AddMaster_Penghasilan";
 import { AddMaster_Nikah } from "./components/comp_master/AddMaster_Nikah";
@@ -40,8 +41,8 @@ import { EditMaster_Penghasilan } from "./components/comp_master/EditMaster_Peng
 import { EditMaster_Nikah } from "./components/comp_master/EditMaster_Nikah";
 import { EditMaster_Anak } from "./components/comp_master/EditMaster_Anak";
 import { EditMaster_Rumah } from "./components/comp_master/EditMaster_Rumah";
-import { AdminLogout } from "./components/comp_master/AdminLogout";
-import { AdminLogin } from "./components/comp_master/AdminLogin";
+import { AdminLogout } from "./components/AdminLogout";
+import { AdminLogin } from "./components/AdminLogin";
 
 class App extends Component {
   constructor() {
@@ -129,6 +130,11 @@ class App extends Component {
         label: "Registrasi",
         icon: "pi pi-fw pi-chart-bar",
         to: "/ListRegistrasi"
+      },
+      {
+        label: "Data Training",
+        icon: "pi pi-fw pi-chart-bar",
+        to: "/DataTraining"
       },
       {
         label: "Data",
@@ -233,6 +239,7 @@ class App extends Component {
           <Route path="/EditMember" component={EditMember} />
           {/* <Route path="/Jurusan" component={ListFK_PR} /> */}
           <Route path="/ListRegistrasi" component={Registrasi} />
+          <Route path="/DataTraining" component={DataTraining} />
           <Route path="/Master" component={Master} />
           <Route
             path="/AddMaster_Penghasilan"

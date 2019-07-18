@@ -21,15 +21,17 @@ export class AddMember extends Component {
       date1: null,
       radioValue: null,
       dropdownPenghasilan: [],
+      dropdownPerpanjang: [],
       dropdownNikah: [],
       dropdownAnak: [],
       dropdownRumah: [],
-      id: 0,
+      id: null,
       nama: "",
-      id_kawin: 0,
-      id_penghasilan: 0,
-      id_rumah: 0,
-      id_anak: 0,
+      id_kawin: 1,
+      id_penghasilan: 1,
+      id_rumah: 1,
+      id_anak: 1,
+      id_perpanjang: 1,
       tempat_lahir: "",
       tanggal_lahir: "",
       alamat: "",
@@ -40,6 +42,11 @@ export class AddMember extends Component {
     axios.get("http://localhost:8000/penghasilan").then(getdata => {
       this.setState({
         dropdownPenghasilan: getdata.data
+      });
+    });
+    axios.get("http://localhost:8000/perpanjang").then(getdata => {
+      this.setState({
+        dropdownPerpanjang: getdata.data
       });
     });
     axios.get("http://localhost:8000/nikah").then(getdata => {
@@ -79,6 +86,14 @@ export class AddMember extends Component {
         point_P = this.state.dropdownPenghasilan[i].point;
       }
     }
+    //get point perpanjang
+    var x7 = this.state.dropdownPerpanjang.length;
+    var point_X;
+    for (var i = 0; i < x1; i++) {
+      if (this.state.id_perpanjang == this.state.dropdownPerpanjang[i].id) {
+        point_X = this.state.dropdownPerpanjang[i].point;
+      }
+    }
     //get point anak
     var x2 = this.state.dropdownAnak.length;
     var point_A;
@@ -103,13 +118,13 @@ export class AddMember extends Component {
         point_R = this.state.dropdownRumah[i].point;
       }
     }
-    var hasilPoint = point_A + point_N + point_P + point_R;
+    var hasilPoint = point_A + point_N + point_P + point_R + point_X;
 
-    // console.log("point penghasilan ", point_P);
-    // console.log("point anak ", point_A);
-    // console.log("point Nikah ", point_N);
-    // console.log("point Rumah ", point_R);
-    // console.log("point Hasil ", hasilPoint);
+    console.log("point penghasilan ", point_P);
+    console.log("point anak ", point_A);
+    console.log("point Nikah ", point_N);
+    console.log("point Rumah ", point_R);
+    console.log("point Hasil ", hasilPoint);
     const nextStatus = hasilPoint >= 8 ? "iya" : "tidak";
     this.setState({ status_member: nextStatus });
 
@@ -131,7 +146,7 @@ export class AddMember extends Component {
         .then(function(response) {
           console.log(response);
           if (alert("anda Berhasil menambahkan data")) {
-            window.location.href("/ListRegistrasi");
+            window.location.replace("/ListRegistrasi");
           }
         })
         .catch(function(error) {
@@ -374,7 +389,17 @@ export class AddMember extends Component {
                   }}
                 >
                   {this.state.dropdownNikah.map((item, ind) => (
-                    <option key={ind} value={item.id}>
+                    <option
+                      key={ind}
+                      value={item.id}
+                      onChange={e =>
+                        this.setState({
+                          id_kawin: e.target.value,
+                          validationError:
+                            e.target.value == "" ? "pilih Status Nikah" : ""
+                        })
+                      }
+                    >
                       {item.nama}
                     </option>
                   ))}
@@ -402,6 +427,34 @@ export class AddMember extends Component {
                   }}
                 >
                   {this.state.dropdownAnak.map((item, ind) => (
+                    <option key={ind} value={item.id}>
+                      {item.nama}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="p-col-12 p-md-4 form-group">
+                <label>Perpanjang</label>
+              </div>
+              <div className="p-col-12 p-md-6 form-group">
+                <select
+                  value={this.state.id_perpanjang}
+                  onChange={e =>
+                    this.setState({
+                      id_perpanjang: e.target.value,
+                      validationError:
+                        e.target.value == "" ? "pilih penghasilan" : ""
+                    })
+                  }
+                  placeholder="pilih penghasilan"
+                  style={{
+                    width: "100%",
+                    padding: "5px",
+                    borderRadius: "5px",
+                    height: "35px"
+                  }}
+                >
+                  {this.state.dropdownPerpanjang.map((item, ind) => (
                     <option key={ind} value={item.id}>
                       {item.nama}
                     </option>
