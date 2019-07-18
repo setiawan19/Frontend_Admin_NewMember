@@ -14,7 +14,7 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { DataView, DataViewLayoutOptions } from "primereact/dataview";
-import "./datatraining.css";
+// import "./datatraining.css";
 
 export class DataTraining extends Component {
   render() {
@@ -23,7 +23,7 @@ export class DataTraining extends Component {
         <div className="p-col-12">
           <div className="card card-w-title">
             <h1>Data Training</h1>
-            
+
             <table style={{ border: "1px solid black" }}>
               <thead>
                 <tr style={{ border: "1px solid black" }}>
@@ -127,7 +127,7 @@ export class DataTraining extends Component {
                 </tr>
               </tbody>
             </table>
-             
+
             <p>
               <b>Data Training</b>
             </p>
