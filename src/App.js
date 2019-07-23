@@ -43,6 +43,7 @@ import { EditMaster_Anak } from "./components/comp_master/EditMaster_Anak";
 import { EditMaster_Rumah } from "./components/comp_master/EditMaster_Rumah";
 import { AdminLogout } from "./components/AdminLogout";
 import { AdminLogin } from "./components/AdminLogin";
+import { About } from "./components/about";
 
 class App extends Component {
   constructor() {
@@ -137,13 +138,13 @@ class App extends Component {
         to: "/DataTraining"
       },
       {
-        label: "Data",
+        label: "Status",
         icon: "pi pi-fw pi-bookmark",
         items: [
           // {label: 'Admin User', icon: 'pi pi-fw pi-user' },
-          { label: "Member", icon: "pi pi-fw pi-users", to: "/data_member" },
+          { label: "Diterima", icon: "pi pi-fw pi-users", to: "/data_member" },
           {
-            label: "Non Member",
+            label: "Ditolak",
             icon: "pi pi-fw pi-file",
             to: "/data_nonmember"
           }
@@ -151,7 +152,8 @@ class App extends Component {
       },
       {
         label: "About Aplication",
-        icon: "pi pi-fw pi-question"
+        icon: "pi pi-fw pi-question",
+        to: "/About"
       }
     ];
   }
@@ -256,6 +258,7 @@ class App extends Component {
           <Route path="/EditMaster_Anak" component={EditMaster_Anak} />
           <Route path="/EditMaster_Rumah" component={EditMaster_Rumah} />
           <Route path="/AdminLogout" component={AdminLogout} />
+          <Route path="/About" component={About} />
         </div>
 
         {/* <AppFooter /> */}

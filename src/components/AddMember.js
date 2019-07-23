@@ -25,7 +25,7 @@ export class AddMember extends Component {
       dropdownNikah: [],
       dropdownAnak: [],
       dropdownRumah: [],
-      id: null,
+      id: 0,
       nama: "",
       id_kawin: 1,
       id_penghasilan: 1,
@@ -89,7 +89,7 @@ export class AddMember extends Component {
     //get point perpanjang
     var x7 = this.state.dropdownPerpanjang.length;
     var point_X;
-    for (var i = 0; i < x1; i++) {
+    for (var i = 0; i < x7; i++) {
       if (this.state.id_perpanjang == this.state.dropdownPerpanjang[i].id) {
         point_X = this.state.dropdownPerpanjang[i].point;
       }
@@ -136,6 +136,7 @@ export class AddMember extends Component {
           nama: this.state.nama,
           id_kawin: this.state.id_kawin,
           id_penghasilan: this.state.id_penghasilan,
+          id_perpanjang: this.state.id_perpanjang,
           id_rumah: this.state.id_rumah,
           id_anak: this.state.id_anak,
           tempat_lahir: this.state.tempat_lahir,

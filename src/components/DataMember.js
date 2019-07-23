@@ -100,7 +100,6 @@ export class DataMember extends Component {
               <Column field="lahir" header="Lahir" sortable={true} />
               <Column field="birth" header="Tgl Lahir" sortable={true} />
               <Column field="alamat" header="Alamat" sortable={true} />
-              <Column field="member" header="Member" sortable={true} />
               <Column
                 field="penghasilan"
                 header="Penghasilan"
@@ -109,6 +108,7 @@ export class DataMember extends Component {
               <Column field="rumah" header="Rumah" sortable={true} />
               <Column field="nikah" header="Menikah" sortable={true} />
               <Column field="anak" header="Anak" sortable={true} />
+              <Column field="member" header="Status Member" sortable={true} />
               <Column header="Edit" body={this.Editbtn.bind(this)} />
               <Column header="Delete" body={this.Delbtn.bind(this)} />
             </DataTable>
