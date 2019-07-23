@@ -220,7 +220,7 @@ class App extends Component {
             <div className="layout-sidebar-scroll-content">
               <div className="layout-logo">
                 {/* <img alt="Logo" src={logo} /> */}
-                <h3 style={{ color: "white" }}>Registrasi Golf</h3>
+                <h3 style={{ color: "white" }}>Prediksi Keanggotaan Golf</h3>
                 <br />
               </div>
               {/* <AppInlineProfile /> */}
